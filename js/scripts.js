@@ -2,9 +2,6 @@ const lista = document.getElementById('lista');
 
 const contactArea = document.querySelector('#area');
 const commentsLounge = document.querySelector('#commentsLounge');
-// const emailName = document.getElementById('emailName');
-// const emailAdress = document.getElementById('emailAdress');
-// const emailContent = document.getElementById('emailContent');
 
 const comments = JSON.parse(localStorage.getItem('listComments')) || [];
 
@@ -67,7 +64,7 @@ function showContent(contentSlug) {
   }
 }
 
-showContent("lounge");
+showContent("about");
 
 
 
@@ -102,33 +99,3 @@ function showComments() {
 }
 
 showComments();
-
-function postEmail(url, body) {
-  // console.log(body);
-  let request = new XMLHttpRequest()
-  request.open("POST", url, true);
-  request.setRequestHeader("Content-type", "application/json", 'Acess-Control-Allow-Origin', '*');
-  request.send(JSON.stringify(body));
-
-  request.onload = function() {
-    console.log(this.responseText);
-  }
-
-  return request.responseText;
-}
-
-function contatoEmail() {
-  event.preventDefault();
-  url = "http://localhost:5502/emailContact";
-  let emailName = document.getElementById('emailName').value;
-  let emailAdress = document.getElementById('emailAdress').value;
-  let emailContent = document.getElementById('emailContent').value;
-
-  body = {
-    "name": emailName,
-    "emailAdress": emailAdress,
-    "emailContent": emailContent,
-  }
-
-  postEmail(url, body);
-}
